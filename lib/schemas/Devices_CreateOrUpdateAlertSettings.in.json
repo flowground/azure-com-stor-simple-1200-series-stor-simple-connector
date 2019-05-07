@@ -1,0 +1,106 @@
+{
+    "type": "object",
+    "properties": {
+        "deviceName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "managerName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Base class for models",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "AlertSettings on the device which represents how alerts will be processed",
+            "properties": {
+                "properties": {
+                    "description": "Properties of AlertSettings",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "additionalRecipientEmailList": {
+                            "description": "List of email addresses (apart from admin/co-admin of subscription) to whom the alert emails need to be sent",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "alertNotificationCulture": {
+                            "description": "Culture setting to be used while building alert emails. For eg: \"en-US\"",
+                            "type": "string"
+                        },
+                        "emailNotification": {
+                            "description": "Value indicating whether user/admins will receive emails when an alert condition occurs on the system",
+                            "enum": [
+                                "Enabled",
+                                "Disabled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "AlertEmailNotificationStatus"
+                            }
+                        },
+                        "notificationToServiceOwners": {
+                            "description": "Value indicating whether service owners will receive emails when an alert condition occurs on the system. Applicable only if emailNotification flag is Enabled.",
+                            "enum": [
+                                "Enabled",
+                                "Disabled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "ServiceOwnersAlertNotificationStatus"
+                            }
+                        }
+                    },
+                    "required": [
+                        "emailNotification",
+                        "notificationToServiceOwners",
+                        "alertNotificationCulture"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

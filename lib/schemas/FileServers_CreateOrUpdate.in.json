@@ -1,0 +1,91 @@
+{
+    "type": "object",
+    "properties": {
+        "deviceName": {
+            "required": true,
+            "type": "string"
+        },
+        "fileServerName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "managerName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Base class for models",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "The file server.",
+            "properties": {
+                "properties": {
+                    "description": "The properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "backupScheduleGroupId": {
+                            "description": "The backup policy id.",
+                            "type": "string"
+                        },
+                        "description": {
+                            "description": "The description of the file server",
+                            "type": "string"
+                        },
+                        "domainName": {
+                            "description": "Domain of the file server",
+                            "type": "string"
+                        },
+                        "storageDomainId": {
+                            "description": "The storage domain id.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "domainName",
+                        "storageDomainId",
+                        "backupScheduleGroupId"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

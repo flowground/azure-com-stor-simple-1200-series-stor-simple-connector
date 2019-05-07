@@ -1,0 +1,73 @@
+{
+    "type": "object",
+    "properties": {
+        "accessControlRecordName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "managerName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Base class for models",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "The access control record",
+            "properties": {
+                "properties": {
+                    "description": "Properties of AccessControlRecord",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "initiatorName": {
+                            "description": "The Iscsi initiator name (IQN)",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "initiatorName"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

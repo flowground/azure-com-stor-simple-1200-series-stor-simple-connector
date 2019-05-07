@@ -1,0 +1,147 @@
+{
+    "type": "object",
+    "properties": {
+        "deviceName": {
+            "required": true,
+            "type": "string"
+        },
+        "iscsiServerName": {
+            "required": true,
+            "type": "string"
+        },
+        "diskName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "managerName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Base class for models",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "The iSCSI disk.",
+            "properties": {
+                "properties": {
+                    "description": "The properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "accessControlRecords": {
+                            "description": "The access control records.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "dataPolicy": {
+                            "description": "The data policy.",
+                            "enum": [
+                                "Invalid",
+                                "Local",
+                                "Tiered",
+                                "Cloud"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "DataPolicy"
+                            }
+                        },
+                        "description": {
+                            "description": "The description.",
+                            "type": "string"
+                        },
+                        "diskStatus": {
+                            "description": "The disk status.",
+                            "enum": [
+                                "Online",
+                                "Offline"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "DiskStatus"
+                            }
+                        },
+                        "localUsedCapacityInBytes": {
+                            "description": "The local used capacity in bytes.",
+                            "format": "int64",
+                            "readOnly": true,
+                            "type": "integer"
+                        },
+                        "monitoringStatus": {
+                            "description": "The monitoring.",
+                            "enum": [
+                                "Enabled",
+                                "Disabled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "MonitoringStatus"
+                            }
+                        },
+                        "provisionedCapacityInBytes": {
+                            "description": "The provisioned capacity in bytes.",
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "usedCapacityInBytes": {
+                            "description": "The used capacity in bytes.",
+                            "format": "int64",
+                            "readOnly": true,
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "diskStatus",
+                        "accessControlRecords",
+                        "dataPolicy",
+                        "provisionedCapacityInBytes",
+                        "monitoringStatus"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,98 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "managerName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Base class for models",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "The extended info of the manager.",
+            "properties": {
+                "etag": {
+                    "description": "ETag of the Resource",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "The extended info properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "algorithm": {
+                            "description": "Represents the encryption algorithm used to encrypt the other keys. None - if EncryptionKey is saved in plain text format. AlgorithmName - if encryption is used",
+                            "type": "string"
+                        },
+                        "encryptionKey": {
+                            "description": "Represents the CEK of the resource",
+                            "type": "string"
+                        },
+                        "encryptionKeyThumbprint": {
+                            "description": "Represents the Cert thumbprint that was used to encrypt the CEK",
+                            "type": "string"
+                        },
+                        "integrityKey": {
+                            "description": "Represents the CIK of the resource",
+                            "type": "string"
+                        },
+                        "portalCertificateThumbprint": {
+                            "description": "Represents the portal thumbprint which can be used optionally to encrypt the entire data before storing it.",
+                            "type": "string"
+                        },
+                        "version": {
+                            "description": "Represents the version of the ExtendedInfo object being persisted",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "integrityKey",
+                        "algorithm"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        },
+        "If_Match": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

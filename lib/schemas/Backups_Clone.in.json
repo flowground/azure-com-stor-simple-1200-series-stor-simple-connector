@@ -1,0 +1,289 @@
+{
+    "type": "object",
+    "properties": {
+        "deviceName": {
+            "required": true,
+            "type": "string"
+        },
+        "backupName": {
+            "required": true,
+            "type": "string"
+        },
+        "elementName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "managerName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50
+        },
+        "requestBody": {
+            "description": "Clone Job Request Model.",
+            "properties": {
+                "properties": {
+                    "description": "CloneJob Properties are encapsulated in this object.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "disk": {
+                            "description": "Disk Object",
+                            "allOf": [
+                                {
+                                    "description": "Base class for models",
+                                    "properties": {
+                                        "id": {
+                                            "description": "The identifier.",
+                                            "readOnly": true,
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "The name.",
+                                            "readOnly": true,
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "description": "The type.",
+                                            "readOnly": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            ],
+                            "properties": {
+                                "properties": {
+                                    "description": "The properties.",
+                                    "x-ms-client-flatten": true,
+                                    "properties": {
+                                        "accessControlRecords": {
+                                            "description": "The access control records.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "dataPolicy": {
+                                            "description": "The data policy.",
+                                            "enum": [
+                                                "Invalid",
+                                                "Local",
+                                                "Tiered",
+                                                "Cloud"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": false,
+                                                "name": "DataPolicy"
+                                            }
+                                        },
+                                        "description": {
+                                            "description": "The description.",
+                                            "type": "string"
+                                        },
+                                        "diskStatus": {
+                                            "description": "The disk status.",
+                                            "enum": [
+                                                "Online",
+                                                "Offline"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": false,
+                                                "name": "DiskStatus"
+                                            }
+                                        },
+                                        "localUsedCapacityInBytes": {
+                                            "description": "The local used capacity in bytes.",
+                                            "format": "int64",
+                                            "readOnly": true,
+                                            "type": "integer"
+                                        },
+                                        "monitoringStatus": {
+                                            "description": "The monitoring.",
+                                            "enum": [
+                                                "Enabled",
+                                                "Disabled"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": false,
+                                                "name": "MonitoringStatus"
+                                            }
+                                        },
+                                        "provisionedCapacityInBytes": {
+                                            "description": "The provisioned capacity in bytes.",
+                                            "format": "int64",
+                                            "type": "integer"
+                                        },
+                                        "usedCapacityInBytes": {
+                                            "description": "The used capacity in bytes.",
+                                            "format": "int64",
+                                            "readOnly": true,
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "required": [
+                                        "diskStatus",
+                                        "accessControlRecords",
+                                        "dataPolicy",
+                                        "provisionedCapacityInBytes",
+                                        "monitoringStatus"
+                                    ],
+                                    "type": "object"
+                                }
+                            },
+                            "required": [
+                                "properties"
+                            ],
+                            "type": "object"
+                        },
+                        "newEndpointName": {
+                            "description": "Name of new endpoint which will created as part of clone job.",
+                            "type": "string"
+                        },
+                        "share": {
+                            "description": "Share Object.",
+                            "allOf": [
+                                {
+                                    "description": "Base class for models",
+                                    "properties": {
+                                        "id": {
+                                            "description": "The identifier.",
+                                            "readOnly": true,
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "The name.",
+                                            "readOnly": true,
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "description": "The type.",
+                                            "readOnly": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            ],
+                            "properties": {
+                                "properties": {
+                                    "description": "The properties.",
+                                    "x-ms-client-flatten": true,
+                                    "properties": {
+                                        "adminUser": {
+                                            "description": "The user/group who will have full permission in this share. Active directory email address. Example: xyz@contoso.com or Contoso\\xyz.",
+                                            "type": "string"
+                                        },
+                                        "dataPolicy": {
+                                            "description": "The data policy",
+                                            "enum": [
+                                                "Invalid",
+                                                "Local",
+                                                "Tiered",
+                                                "Cloud"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": false,
+                                                "name": "DataPolicy"
+                                            }
+                                        },
+                                        "description": {
+                                            "description": "Description for file share",
+                                            "type": "string"
+                                        },
+                                        "localUsedCapacityInBytes": {
+                                            "description": "The local used capacity in Bytes.",
+                                            "format": "int64",
+                                            "readOnly": true,
+                                            "type": "integer"
+                                        },
+                                        "monitoringStatus": {
+                                            "description": "The monitoring status",
+                                            "enum": [
+                                                "Enabled",
+                                                "Disabled"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": false,
+                                                "name": "MonitoringStatus"
+                                            }
+                                        },
+                                        "provisionedCapacityInBytes": {
+                                            "description": "The total provisioned capacity in Bytes",
+                                            "format": "int64",
+                                            "type": "integer"
+                                        },
+                                        "shareStatus": {
+                                            "description": "The Share Status",
+                                            "enum": [
+                                                "Online",
+                                                "Offline"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": false,
+                                                "name": "ShareStatus"
+                                            }
+                                        },
+                                        "usedCapacityInBytes": {
+                                            "description": "The used capacity in Bytes.",
+                                            "format": "int64",
+                                            "readOnly": true,
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "required": [
+                                        "shareStatus",
+                                        "dataPolicy",
+                                        "adminUser",
+                                        "provisionedCapacityInBytes",
+                                        "monitoringStatus"
+                                    ],
+                                    "type": "object"
+                                }
+                            },
+                            "required": [
+                                "properties"
+                            ],
+                            "type": "object"
+                        },
+                        "targetAccessPointId": {
+                            "description": "Access point Id on which clone job will performed.",
+                            "type": "string"
+                        },
+                        "targetDeviceId": {
+                            "description": "DeviceId of the device which will act as the Clone target",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "targetDeviceId",
+                        "targetAccessPointId",
+                        "newEndpointName"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
